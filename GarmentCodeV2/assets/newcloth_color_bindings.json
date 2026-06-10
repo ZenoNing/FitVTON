@@ -1,0 +1,491 @@
+{
+  "meta": {
+    "description": "Editable fixed color bindings for the 19 assets/newcloth garment units.",
+    "source_dir": "assets/newcloth",
+    "unit_count": 19,
+    "usage": "Edit garment color hex values here, then wire this file into texture generation to color panels by garment unit."
+  },
+  "defaults": {
+    "waist": {
+      "color": "#6B381A",
+      "rgb_float": [
+        0.4196,
+        0.2196,
+        0.102
+      ],
+      "panel_prefixes": [
+        "wb_"
+      ]
+    },
+    "component": {
+      "color": "#FFFFFF",
+      "rgb_float": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "panel_names": [
+        "left_collar_back",
+        "left_collar_front",
+        "right_collar_back",
+        "right_collar_front"
+      ]
+    }
+  },
+  "garments": {
+    "upper1": {
+      "id": "upper1",
+      "role": "upper",
+      "color": "#E8E3DA",
+      "rgb_float": [
+        0.9098,
+        0.8902,
+        0.8549
+      ],
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "right_btorso",
+        "right_ftorso"
+      ],
+      "source_files": [
+        "upper1_circleskirt1_specification.json",
+        "upper1_circleskirt2_specification.json",
+        "upper1_pants1_specification.json",
+        "upper1_pants2_specification.json",
+        "upper1_pants3_specification.json",
+        "upper1_pants4_specification.json",
+        "upper1_pencilskirt1_specification.json",
+        "upper1_pencilskirt2_specification.json"
+      ]
+    },
+    "upper2": {
+      "id": "upper2",
+      "role": "upper",
+      "color": "#C9D7E8",
+      "rgb_float": [
+        0.7882,
+        0.8431,
+        0.9098
+      ],
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "right_btorso",
+        "right_ftorso",
+        "right_sleeve_b",
+        "right_sleeve_f"
+      ],
+      "source_files": [
+        "upper2_circleskirt1_specification.json",
+        "upper2_circleskirt2_specification.json",
+        "upper2_pants1_specification.json",
+        "upper2_pants2_specification.json",
+        "upper2_pants3_specification.json",
+        "upper2_pants4_specification.json",
+        "upper2_pencilskirt1_specification.json",
+        "upper2_pencilskirt2_specification.json"
+      ]
+    },
+    "upper3": {
+      "id": "upper3",
+      "role": "upper",
+      "color": "#D8C7BA",
+      "rgb_float": [
+        0.8471,
+        0.7804,
+        0.7294
+      ],
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "right_btorso",
+        "right_ftorso",
+        "right_sleeve_b",
+        "right_sleeve_f"
+      ],
+      "source_files": [
+        "upper3_circleskirt1_specification.json",
+        "upper3_circleskirt2_specification.json",
+        "upper3_pants1_specification.json",
+        "upper3_pants2_specification.json",
+        "upper3_pants3_specification.json",
+        "upper3_pants4_specification.json",
+        "upper3_pencilskirt1_specification.json",
+        "upper3_pencilskirt2_specification.json"
+      ]
+    },
+    "pants1": {
+      "id": "pants1",
+      "role": "pants",
+      "color": "#2B2F36",
+      "rgb_float": [
+        0.1686,
+        0.1843,
+        0.2118
+      ],
+      "panel_names": [
+        "pant_b_l",
+        "pant_b_r",
+        "pant_f_l",
+        "pant_f_r",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_pants1_specification.json",
+        "upper2_pants1_specification.json",
+        "upper3_pants1_specification.json"
+      ]
+    },
+    "pants2": {
+      "id": "pants2",
+      "role": "pants",
+      "color": "#3F454E",
+      "rgb_float": [
+        0.2471,
+        0.2706,
+        0.3059
+      ],
+      "panel_names": [
+        "pant_b_l",
+        "pant_b_r",
+        "pant_f_l",
+        "pant_f_r",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_pants2_specification.json",
+        "upper2_pants2_specification.json",
+        "upper3_pants2_specification.json"
+      ]
+    },
+    "pants3": {
+      "id": "pants3",
+      "role": "pants",
+      "color": "#1F2933",
+      "rgb_float": [
+        0.1216,
+        0.1608,
+        0.2
+      ],
+      "panel_names": [
+        "pant_b_l",
+        "pant_b_r",
+        "pant_f_l",
+        "pant_f_r",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_pants3_specification.json",
+        "upper2_pants3_specification.json",
+        "upper3_pants3_specification.json"
+      ]
+    },
+    "pants4": {
+      "id": "pants4",
+      "role": "pants",
+      "color": "#4A4038",
+      "rgb_float": [
+        0.2902,
+        0.251,
+        0.2196
+      ],
+      "panel_names": [
+        "pant_b_l",
+        "pant_b_r",
+        "pant_f_l",
+        "pant_f_r",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_pants4_specification.json",
+        "upper2_pants4_specification.json",
+        "upper3_pants4_specification.json"
+      ]
+    },
+    "pencilskirt1": {
+      "id": "pencilskirt1",
+      "role": "pencilskirt",
+      "color": "#333333",
+      "rgb_float": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "panel_names": [
+        "skirt_back",
+        "skirt_front",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_pencilskirt1_specification.json",
+        "upper2_pencilskirt1_specification.json",
+        "upper3_pencilskirt1_specification.json"
+      ]
+    },
+    "pencilskirt2": {
+      "id": "pencilskirt2",
+      "role": "pencilskirt",
+      "color": "#4E3A46",
+      "rgb_float": [
+        0.3059,
+        0.2275,
+        0.2745
+      ],
+      "panel_names": [
+        "ins_skirt_back_0",
+        "ins_skirt_back_1",
+        "ins_skirt_front_0",
+        "ins_skirt_front_1",
+        "skirt_back",
+        "skirt_front",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_pencilskirt2_specification.json",
+        "upper2_pencilskirt2_specification.json",
+        "upper3_pencilskirt2_specification.json"
+      ]
+    },
+    "circleskirt1": {
+      "id": "circleskirt1",
+      "role": "circleskirt",
+      "color": "#37485C",
+      "rgb_float": [
+        0.2157,
+        0.2824,
+        0.3608
+      ],
+      "panel_names": [
+        "skirt_back",
+        "skirt_front",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_circleskirt1_specification.json",
+        "upper2_circleskirt1_specification.json",
+        "upper3_circleskirt1_specification.json"
+      ]
+    },
+    "circleskirt2": {
+      "id": "circleskirt2",
+      "role": "circleskirt",
+      "color": "#5A3E35",
+      "rgb_float": [
+        0.3529,
+        0.2431,
+        0.2078
+      ],
+      "panel_names": [
+        "skirt_back",
+        "skirt_front",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_circleskirt2_specification.json",
+        "upper2_circleskirt2_specification.json",
+        "upper3_circleskirt2_specification.json"
+      ]
+    },
+    "dress1": {
+      "id": "dress1",
+      "role": "dress",
+      "color": "#7A3E48",
+      "rgb_float": [
+        0.4784,
+        0.2431,
+        0.2824
+      ],
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "right_btorso",
+        "right_ftorso",
+        "right_sleeve_b",
+        "right_sleeve_f",
+        "skirt_back",
+        "skirt_front",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "dress1_specification.json"
+      ]
+    },
+    "dress2": {
+      "id": "dress2",
+      "role": "dress",
+      "color": "#7B5A2E",
+      "rgb_float": [
+        0.4824,
+        0.3529,
+        0.1804
+      ],
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "right_btorso",
+        "right_ftorso",
+        "skirt_panel_0",
+        "skirt_panel_1",
+        "skirt_panel_2",
+        "skirt_panel_3"
+      ],
+      "source_files": [
+        "dress2_specification.json"
+      ]
+    },
+    "dress3": {
+      "id": "dress3",
+      "role": "dress",
+      "color": "#3E5F4D",
+      "rgb_float": [
+        0.2431,
+        0.3725,
+        0.302
+      ],
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "right_btorso",
+        "right_ftorso",
+        "skirt_back",
+        "skirt_front",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "dress3_specification.json"
+      ]
+    },
+    "dress4": {
+      "id": "dress4",
+      "role": "dress",
+      "color": "#4A4E74",
+      "rgb_float": [
+        0.2902,
+        0.3059,
+        0.4549
+      ],
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "right_btorso",
+        "right_ftorso",
+        "skirt_back",
+        "skirt_front"
+      ],
+      "source_files": [
+        "dress4_specification.json"
+      ]
+    },
+    "dress5": {
+      "id": "dress5",
+      "role": "dress",
+      "color": "#6A4B73",
+      "rgb_float": [
+        0.4157,
+        0.2941,
+        0.451
+      ],
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "right_btorso",
+        "right_ftorso",
+        "right_sleeve_b",
+        "right_sleeve_f",
+        "skirt_back",
+        "skirt_front"
+      ],
+      "source_files": [
+        "dress5_specification.json"
+      ]
+    },
+    "dress6": {
+      "id": "dress6",
+      "role": "dress",
+      "color": "#8A6E4B",
+      "rgb_float": [
+        0.5412,
+        0.4314,
+        0.2941
+      ],
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "right_btorso",
+        "right_ftorso",
+        "right_sleeve_b",
+        "right_sleeve_f",
+        "skirt_back",
+        "skirt_front"
+      ],
+      "source_files": [
+        "dress6_specification.json"
+      ]
+    },
+    "dress7": {
+      "id": "dress7",
+      "role": "dress",
+      "color": "#4C6B7A",
+      "rgb_float": [
+        0.298,
+        0.4196,
+        0.4784
+      ],
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "right_btorso",
+        "right_ftorso",
+        "skirt_back",
+        "skirt_front"
+      ],
+      "source_files": [
+        "dress7_specification.json"
+      ]
+    },
+    "dress8": {
+      "id": "dress8",
+      "role": "dress",
+      "color": "#6B5A46",
+      "rgb_float": [
+        0.4196,
+        0.3529,
+        0.2745
+      ],
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "right_btorso",
+        "right_ftorso",
+        "skirt_back",
+        "skirt_back_0",
+        "skirt_front",
+        "skirt_front_0"
+      ],
+      "source_files": [
+        "dress8_specification.json"
+      ]
+    }
+  }
+}

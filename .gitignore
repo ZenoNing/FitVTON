@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+.venv*/
+venv/
+
+# IDE / editor
+.vscode/
+.idea/
+*.code-workspace
+
+# Training / inference outputs
+outputs/
+logs/
+wandb/
+
+# Local dataset copies (download from Hugging Face instead)
+FittingEffectDataset/
+
+# Pretrained LoRA weights (download from https://huggingface.co/ZenoNing/FitVTON)
+checkpoints/
+
+# Local vLLM serving env (not part of the public release)
+environment-vllm-qwen36-cu126.yml
+
+# Omniverse Kit extensions (not used by GarmentCode simulation; upstream LFS assets)
+NvidiaWarp-GarmentCode/exts/
+
+# OS
+.DS_Store

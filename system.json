@@ -1,0 +1,30 @@
+{
+  "_description": "FitVTON runtime configuration. Fill in path fields after cloning (see project docs for recommended values). Empty path fields fall back to built-in defaults in system_config.py until set. Relative paths are resolved from the FitVTON directory.",
+  "models": {
+    "_description": "HuggingFace model IDs (required) and optional local snapshot directories.",
+    "flux_kontext_model_id": "black-forest-labs/FLUX.1-Kontext-dev",
+    "longclip_model_id": "zer0int/LongCLIP-KO-LITE-TypoAttack-Attn-ViT-L-14",
+    "flux_model_path": "",
+    "longclip_model_path": ""
+  },
+  "datasets": {
+    "_description": "Dataset roots and evaluation assets.",
+    "garmentcode_root": "",
+    "dresscode_root": "",
+    "viton_root": "",
+    "fittingeffect_root": ""
+  },
+  "checkpoints": {
+    "_description": "Directory containing shipped LoRA weight files (e.g. default_lora_weights.safetensors, texture_lora_weights.safetensors).",
+    "root": ""
+  },
+  "outputs": {
+    "_description": "Default output directories for training and inference.",
+    "pseudo_images": "",
+    "fitting_lora": "",
+    "texture_lora": "",
+    "maskhead": "",
+    "demo": "",
+    "fittingeffect": ""
+  }
+}

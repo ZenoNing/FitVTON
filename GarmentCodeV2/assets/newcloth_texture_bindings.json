@@ -1,0 +1,418 @@
+{
+  "meta": {
+    "description": "Editable fixed texture bindings for the 19 assets/newcloth garment units.",
+    "source_dir": "assets/newcloth",
+    "texture_source_dir": "assets/newfabric",
+    "unit_count": 19,
+    "usage": "Edit garment texture_path values here, then wire this file into texture generation to texture panels by garment unit."
+  },
+  "defaults": {
+    "waist": {
+      "use_lower_texture": true,
+      "tint": "#2A2A2A",
+      "tint_alpha": 0.1,
+      "panel_prefixes": [
+        "wb_"
+      ]
+    }
+  },
+  "garments": {
+    "upper1": {
+      "id": "upper1",
+      "role": "upper",
+      "texture_path": "assets/newfabric/upper1.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "right_btorso",
+        "right_ftorso"
+      ],
+      "source_files": [
+        "upper1_circleskirt1_specification.json",
+        "upper1_circleskirt2_specification.json",
+        "upper1_pants1_specification.json",
+        "upper1_pants2_specification.json",
+        "upper1_pants3_specification.json",
+        "upper1_pants4_specification.json",
+        "upper1_pencilskirt1_specification.json",
+        "upper1_pencilskirt2_specification.json"
+      ]
+    },
+    "upper2": {
+      "id": "upper2",
+      "role": "upper",
+      "texture_path": "assets/newfabric/upper2.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "right_btorso",
+        "right_ftorso",
+        "right_sleeve_b",
+        "right_sleeve_f"
+      ],
+      "source_files": [
+        "upper2_circleskirt1_specification.json",
+        "upper2_circleskirt2_specification.json",
+        "upper2_pants1_specification.json",
+        "upper2_pants2_specification.json",
+        "upper2_pants3_specification.json",
+        "upper2_pants4_specification.json",
+        "upper2_pencilskirt1_specification.json",
+        "upper2_pencilskirt2_specification.json"
+      ]
+    },
+    "upper3": {
+      "id": "upper3",
+      "role": "upper",
+      "texture_path": "assets/newfabric/upper3.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "right_btorso",
+        "right_ftorso",
+        "right_sleeve_b",
+        "right_sleeve_f"
+      ],
+      "source_files": [
+        "upper3_circleskirt1_specification.json",
+        "upper3_circleskirt2_specification.json",
+        "upper3_pants1_specification.json",
+        "upper3_pants2_specification.json",
+        "upper3_pants3_specification.json",
+        "upper3_pants4_specification.json",
+        "upper3_pencilskirt1_specification.json",
+        "upper3_pencilskirt2_specification.json"
+      ]
+    },
+    "pants1": {
+      "id": "pants1",
+      "role": "pants",
+      "texture_path": "assets/newfabric/pant1.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "pant_b_l",
+        "pant_b_r",
+        "pant_f_l",
+        "pant_f_r",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_pants1_specification.json",
+        "upper2_pants1_specification.json",
+        "upper3_pants1_specification.json"
+      ]
+    },
+    "pants2": {
+      "id": "pants2",
+      "role": "pants",
+      "texture_path": "assets/newfabric/pant2.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "pant_b_l",
+        "pant_b_r",
+        "pant_f_l",
+        "pant_f_r",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_pants2_specification.json",
+        "upper2_pants2_specification.json",
+        "upper3_pants2_specification.json"
+      ]
+    },
+    "pants3": {
+      "id": "pants3",
+      "role": "pants",
+      "texture_path": "assets/newfabric/pant3.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "pant_b_l",
+        "pant_b_r",
+        "pant_f_l",
+        "pant_f_r",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_pants3_specification.json",
+        "upper2_pants3_specification.json",
+        "upper3_pants3_specification.json"
+      ]
+    },
+    "pants4": {
+      "id": "pants4",
+      "role": "pants",
+      "texture_path": "assets/newfabric/pant4.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "pant_b_l",
+        "pant_b_r",
+        "pant_f_l",
+        "pant_f_r",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_pants4_specification.json",
+        "upper2_pants4_specification.json",
+        "upper3_pants4_specification.json"
+      ]
+    },
+    "pencilskirt1": {
+      "id": "pencilskirt1",
+      "role": "pencilskirt",
+      "texture_path": "assets/newfabric/pencilskirt1.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "skirt_back",
+        "skirt_front",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_pencilskirt1_specification.json",
+        "upper2_pencilskirt1_specification.json",
+        "upper3_pencilskirt1_specification.json"
+      ]
+    },
+    "pencilskirt2": {
+      "id": "pencilskirt2",
+      "role": "pencilskirt",
+      "texture_path": "assets/newfabric/pencilskirt2.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "ins_skirt_back_0",
+        "ins_skirt_back_1",
+        "ins_skirt_front_0",
+        "ins_skirt_front_1",
+        "skirt_back",
+        "skirt_front",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_pencilskirt2_specification.json",
+        "upper2_pencilskirt2_specification.json",
+        "upper3_pencilskirt2_specification.json"
+      ]
+    },
+    "circleskirt1": {
+      "id": "circleskirt1",
+      "role": "circleskirt",
+      "texture_path": "assets/newfabric/circleskirt1.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "skirt_back",
+        "skirt_front",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_circleskirt1_specification.json",
+        "upper2_circleskirt1_specification.json",
+        "upper3_circleskirt1_specification.json"
+      ]
+    },
+    "circleskirt2": {
+      "id": "circleskirt2",
+      "role": "circleskirt",
+      "texture_path": "assets/newfabric/circleskirt2.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "skirt_back",
+        "skirt_front",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "upper1_circleskirt2_specification.json",
+        "upper2_circleskirt2_specification.json",
+        "upper3_circleskirt2_specification.json"
+      ]
+    },
+    "dress1": {
+      "id": "dress1",
+      "role": "dress",
+      "texture_path": "assets/newfabric/dress1.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "right_btorso",
+        "right_ftorso",
+        "right_sleeve_b",
+        "right_sleeve_f",
+        "skirt_back",
+        "skirt_front",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "dress1_specification.json"
+      ]
+    },
+    "dress2": {
+      "id": "dress2",
+      "role": "dress",
+      "texture_path": "assets/newfabric/dress2.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "right_btorso",
+        "right_ftorso",
+        "skirt_panel_0",
+        "skirt_panel_1",
+        "skirt_panel_2",
+        "skirt_panel_3"
+      ],
+      "source_files": [
+        "dress2_specification.json"
+      ]
+    },
+    "dress3": {
+      "id": "dress3",
+      "role": "dress",
+      "texture_path": "assets/newfabric/dress3.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "right_btorso",
+        "right_ftorso",
+        "skirt_back",
+        "skirt_front",
+        "wb_back",
+        "wb_front"
+      ],
+      "source_files": [
+        "dress3_specification.json"
+      ]
+    },
+    "dress4": {
+      "id": "dress4",
+      "role": "dress",
+      "texture_path": "assets/newfabric/dress4.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "right_btorso",
+        "right_ftorso",
+        "skirt_back",
+        "skirt_front"
+      ],
+      "source_files": [
+        "dress4_specification.json"
+      ]
+    },
+    "dress5": {
+      "id": "dress5",
+      "role": "dress",
+      "texture_path": "assets/newfabric/dress5.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "right_btorso",
+        "right_ftorso",
+        "right_sleeve_b",
+        "right_sleeve_f",
+        "skirt_back",
+        "skirt_front"
+      ],
+      "source_files": [
+        "dress5_specification.json"
+      ]
+    },
+    "dress6": {
+      "id": "dress6",
+      "role": "dress",
+      "texture_path": "assets/newfabric/dress6.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "right_btorso",
+        "right_ftorso",
+        "right_sleeve_b",
+        "right_sleeve_f",
+        "skirt_back",
+        "skirt_front"
+      ],
+      "source_files": [
+        "dress6_specification.json"
+      ]
+    },
+    "dress7": {
+      "id": "dress7",
+      "role": "dress",
+      "texture_path": "assets/newfabric/dress7.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "right_btorso",
+        "right_ftorso",
+        "skirt_back",
+        "skirt_front"
+      ],
+      "source_files": [
+        "dress7_specification.json"
+      ]
+    },
+    "dress8": {
+      "id": "dress8",
+      "role": "dress",
+      "texture_path": "assets/newfabric/dress8.png",
+      "texture_scale": 5.0,
+      "tint": "#FFFFFF",
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "right_btorso",
+        "right_ftorso",
+        "skirt_back",
+        "skirt_back_0",
+        "skirt_front",
+        "skirt_front_0"
+      ],
+      "source_files": [
+        "dress8_specification.json"
+      ]
+    }
+  }
+}

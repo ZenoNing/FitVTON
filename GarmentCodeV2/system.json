@@ -1,0 +1,15 @@
+{
+  "output": "./outputs",
+  "datasets_path": "",
+  "datasets_sim": "./sim_results",
+  "sim_configs_path": "./assets/Sim_props",
+  "bodies_default_path": "./assets/bodies",
+  "body_samples_path": "",
+  "smplx_models_dir": "./human_model_files/smplx",
+  "smpl_models_dir": "./human_model_files/smpl",
+  "dataset_root": "./outputs/vton_dataset",
+  "demo_root": "./outputs/vton_demo",
+  "vton_ref_root": "./outputs/vton_dataset/Ref",
+  "body_preview_output_root": "./outputs/body_previews",
+  "pose_dir": "./smplx"
+}

@@ -1,0 +1,38 @@
+# Jupyter tmp files 
+.ipynb_checkpoints
+
+# VSCode settings
+*.code-workspace
+.vscode
+__pycache__
+
+# PyCharm
+.idea
+
+# Compiled files
+*.pyc
+dist
+*egg-info*
+
+# Maya
+.mayaSwatches
+
+# system.json ships with repo-relative defaults (see system.template.json);
+# edit it in place to customize paths
+
+# place to store render scenes
+**/data_generation/Scenes
+
+# file for small script tries
+tmp*
+*tmp*.mb
+Logs*
+output*
+
+# Nicegui
+.nicegui
+
+# SMPL / SMPL-X weights (download separately; see human_model_files/README.md)
+human_model_files/**/*.pkl
+human_model_files/**/*.npz
+human_model_files/**/*.npy

@@ -1,0 +1,56 @@
+# Third-Party and Bundled Component Licenses
+
+This repository combines several independently licensed components. The root
+`LICENSE` (MIT) covers only original work and modifications by the GarmentCodeVTON
+copyright holders. Everything below retains its own license.
+
+## GarmentCodeV2 (pygarment / GarmentCode)
+
+- **Location:** `GarmentCodeV2/`
+- **License:** MIT License
+- **Copyright:** Copyright (c) 2024 Maria Korosteleva
+- **Full text:** `GarmentCodeV2/LICENSE`
+
+Unmodified portions of GarmentCodeV2 remain under the upstream MIT license.
+Modifications in this repository may additionally be covered by the root MIT
+license where noted in the root `LICENSE` scope section.
+
+## NVIDIA Warp (GarmentCodeData fork)
+
+- **Location:** `NvidiaWarp-GarmentCode/`
+- **License:** NVIDIA Source Code License for Warp (NVSCL)
+- **Copyright:** Copyright (c) 2022 NVIDIA CORPORATION. All rights reserved.
+- **Full text:** `NvidiaWarp-GarmentCode/LICENSE.md`
+
+**Important:** NVSCL Section 3.3 limits use of the Work and derivative works to
+**non-commercial** purposes (research or evaluation). Redistribution must include
+a complete copy of `NvidiaWarp-GarmentCode/LICENSE.md` without modification of
+NVIDIA attribution notices.
+
+Local changes in this fork (for example NumPy 2 compatibility patches) are
+derivative works of the Warp Work and remain subject to NVSCL.
+
+## Hugging Face / diffusers training utilities
+
+Some training scripts at the repository root are derived from Hugging Face
+diffusers examples and retain their original SPDX headers (for example
+`train_garmentcodevton.py`). Those files are subject to the Apache License 2.0
+where indicated in the file header, not only the root MIT license.
+
+## Python and system dependencies
+
+Runtime dependencies (PyTorch, diffusers, transformers, pyrender, SMPL/SMPL-X
+model weights, FLUX checkpoints, and others) are **not** distributed as part of
+this repository and are governed by their respective upstream licenses. Model
+weights and human body assets must be obtained separately under their own terms.
+
+## Summary table
+
+| Component              | Path                         | License        | Commercial use |
+|------------------------|------------------------------|----------------|----------------|
+| GarmentCodeVTON (root) | repo root (see `LICENSE`)    | MIT            | Yes            |
+| GarmentCodeV2          | `GarmentCodeV2/`             | MIT            | Yes            |
+| NVIDIA Warp fork       | `NvidiaWarp-GarmentCode/`    | NVSCL          | No (Sec. 3.3)  |
+| HF-derived train files | e.g. `train_garmentcodevton.py` | Apache-2.0 (per file) | Per Apache-2.0 |
+
+When in doubt, read the license file in the component directory.
