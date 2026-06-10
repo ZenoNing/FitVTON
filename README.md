@@ -166,7 +166,6 @@ After download, confirm the layouts:
 - `GarmentCodeVTON/` contains `Ref/`, `female/`, and `male/` (see [GarmentCodeVTON layout](#output-layout-garmentcodevton))
 - `FittingEffectDataset/` contains `tryon_triples_all.csv`, `female/`, and `male/` (see [FittingEffect3K](#fittingeffect3k))
 
-If a repo is gated, log in first: `hf auth login`.
 
 ### 3. Configure paths
 
