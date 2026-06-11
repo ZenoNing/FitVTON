@@ -14,7 +14,7 @@ sim:
     max_self_collisions: 30000
 
     zero_gravity_steps: 10
-    resolution_scale: 2.0
+    resolution_scale: 1.0
     ground: true
     material:
       garment_tri_ka: 10000.0
@@ -73,8 +73,8 @@ sim:
       waistband_side_lower_y_window: 8.0
       waistband_overlap_margin: 1.0
       waistband_overlap_band_margin: 1.0
-      disable_untucked_upper_hem_constraint: false
-      enable_untucked_waistband_fit_constraint: false
+      disable_untucked_upper_hem_constraint: true
+      enable_untucked_waistband_fit_constraint: true
       untucked_waistband_fit_scope: waistband
       untucked_waistband_fit_band_height: 6.0
       untucked_waistband_fit_margin: 0.35
