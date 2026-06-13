@@ -5,4 +5,4 @@ Body model weights are **not** shipped with this repository. Download them from 
 - SMPL: https://smpl.is.tue.mpg.de/
 - SMPL-X: https://smpl-x.is.tue.mpg.de/
 
-See the main [FitVTON README](../../README.md#smpl--smpl-x-body-models) for filenames and placement.
+See [GarmentCodeV2 and Local Simulation Data](../../docs/garmentcodev2.md#smpl--smpl-x-body-models) for filenames and placement.
