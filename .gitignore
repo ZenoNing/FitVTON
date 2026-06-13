@@ -21,6 +21,11 @@ outputs/
 logs/
 wandb/
 
+# Wild-image try-on assets and local inference scripts
+assets/wild_image/
+inference_wild_female_dress.py
+inference_wild_male_upper.py
+
 # Local dataset copies (download from Hugging Face instead)
 FittingEffectDataset/
 

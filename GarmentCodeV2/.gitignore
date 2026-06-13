@@ -36,3 +36,5 @@ output*
 human_model_files/**/*.pkl
 human_model_files/**/*.npz
 human_model_files/**/*.npy
+
+render_body_renders.py

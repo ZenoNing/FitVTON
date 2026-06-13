@@ -26,5 +26,13 @@
     "maskhead": "",
     "demo": "",
     "fittingeffect": ""
+  },
+  "vlm_eval": {
+    "_description": "OpenAI-compatible VLM API for fit-oriented evaluation (Fit-Oriented Evaluation Protocol). Set gateway (base URL) and api_key before running vlm_fit_eval.py.",
+    "gateway": "",
+    "api_key": "",
+    "model": "gpt-5.2-chat",
+    "output_dir": "eval_vlm",
+    "concurrency": "8"
   }
 }

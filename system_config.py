@@ -36,9 +36,16 @@ _BUILTIN_DEFAULTS: dict[str, dict[str, str]] = {
         "demo": "outputs/demo",
         "fittingeffect": "outputs/fittingeffect",
     },
+    "vlm_eval": {
+        "gateway": "",
+        "api_key": "",
+        "model": "gpt-5.2-chat",
+        "output_dir": "eval_vlm",
+        "concurrency": "8",
+    },
 }
 
-_PATH_SECTIONS = frozenset({"datasets", "checkpoints", "outputs"})
+_PATH_SECTIONS = frozenset({"datasets", "checkpoints", "outputs", "vlm_eval"})
 
 FITTING_LORA_WEIGHT_NAME = "default_lora_weights.safetensors"
 TEXTURE_LORA_WEIGHT_NAME = "texture_lora_weights.safetensors"
@@ -122,6 +129,44 @@ def flux_model_id() -> str:
 
 def longclip_model_id() -> str:
     return cfg("models", "longclip_model_id")
+
+
+def _vlm_eval_value(key: str) -> str:
+    env_map = {
+        "gateway": "VLM_EVAL_GATEWAY",
+        "api_key": "VLM_EVAL_API_KEY",
+        "model": "VLM_EVAL_MODEL",
+    }
+    env_key = env_map.get(key)
+    if env_key:
+        env_val = os.environ.get(env_key, "").strip()
+        if env_val:
+            return env_val
+    section = load_config().get("vlm_eval", {})
+    if key not in section or _is_unset(section[key]):
+        raise KeyError(f"vlm_eval.{key} is not set in system.json (or via env override)")
+    return str(section[key]).strip()
+
+
+def vlm_eval_gateway() -> str:
+    return _vlm_eval_value("gateway").rstrip("/")
+
+
+def vlm_eval_api_key() -> str:
+    return _vlm_eval_value("api_key")
+
+
+def vlm_eval_model() -> str:
+    return _vlm_eval_value("model")
+
+
+def vlm_eval_output_dir() -> str:
+    return cfg_path("vlm_eval", "output_dir")
+
+
+def vlm_eval_concurrency() -> int:
+    raw = _vlm_eval_value("concurrency")
+    return max(1, int(raw))
 
 
 def local_model_override(repo_id: str) -> Path | None:

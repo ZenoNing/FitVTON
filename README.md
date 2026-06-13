@@ -36,6 +36,7 @@ This repo maps the paper's pipeline onto the following entry points:
 | Stage II: texture rectification LoRA | `train_texture_lora.py` / `scripts/train_stage2.sh` |
 | Single-sample fit-prompt inference | `inference_demo.py` |
 | FittingEffect3K evaluation | `inference_fittingeffect.py` / `scripts/run_fittingeffect_eval.sh` |
+| Fit-oriented VLM evaluation | `vlm_fit_eval.py` |
 | VITON-HD / DressCode benchmark inference | `inference_benchmark_testset.py` |
 | Datasets (GarmentCodeVTON, DressCode pseudo pairs, VITON) | `dataset.py` |
 | Custom multi-image Kontext pipeline | `pipeline_flux_kontext_multiple_images.py` |
@@ -44,7 +45,7 @@ This repo maps the paper's pipeline onto the following entry points:
 
 ## Results
 
-Fit-oriented protocol on FittingEffect3K (GPT-scored, 1–5; category averages across GB / T/L / SC / LF):
+Fit-oriented protocol on FittingEffect3K (VLM-scored, 1–5; category averages across GB / T/L / SC / LF). **Whole Avg** is the unweighted mean of the three garment-type category averages (upper, lower, dress), so each type contributes equally regardless of sample count.
 
 <div align="center">
 
@@ -87,6 +88,7 @@ FitVTON/
 ├── generate_pseudo_images.py    # Stage II pseudo-triplet generation
 ├── inference_demo.py            # Single-sample inference
 ├── inference_fittingeffect.py   # FittingEffect3K batch inference
+├── vlm_fit_eval.py                  # Fit-oriented VLM evaluation + score aggregation
 ├── inference_benchmark_testset.py # VITON-HD / DressCode benchmarks
 ├── pipeline_flux_kontext_multiple_images.py
 ├── scripts/                     # Shell entry points
@@ -213,6 +215,9 @@ python inference_demo.py --person_image ... --reference_image ... \
 
 # FittingEffect3K benchmark (uses datasets.fittingeffect_root)
 bash scripts/run_fittingeffect_eval.sh
+
+# Fit-oriented VLM evaluation on predicted try-on images (requires API config in system.json)
+python vlm_fit_eval.py --predict-folder outputs/fittingeffect
 
 # DressCode / VITON-HD benchmarks
 python inference_benchmark_testset.py --dataset dresscode
@@ -372,6 +377,11 @@ Recommended values:
 | `outputs.maskhead` | `outputs/maskhead` | Mask-head training output |
 | `outputs.demo` | `outputs/demo` | Demo inference output |
 | `outputs.fittingeffect` | `outputs/fittingeffect` | FittingEffect3K inference output |
+| `vlm_eval.gateway` | *(user-provided)* | OpenAI-compatible API base URL for VLM fit evaluation (`vlm_fit_eval.py`) |
+| `vlm_eval.api_key` | *(user-provided)* | API key for the VLM scoring agent |
+| `vlm_eval.model` | `gpt-5.2-chat` | VLM scoring agent (paper default; must accept two images) |
+| `vlm_eval.output_dir` | `eval_vlm` | VLM evaluation JSON + analysis output |
+| `vlm_eval.concurrency` | `8` | Concurrent API requests during batch scoring |
 
 Fixed repo files (not configurable in `system.json`):
 
@@ -650,6 +660,12 @@ FittingEffect3K benchmark eval (multi-GPU sharded):
 bash scripts/run_fittingeffect_eval.sh
 ```
 
+Score predictions with the fit-oriented VLM protocol (see [VLM fit evaluation](#vlm-fit-evaluation)):
+
+```bash
+python vlm_fit_eval.py --predict-folder outputs/fittingeffect
+```
+
 DressCode / VITON-HD benchmark testset:
 
 ```bash
@@ -675,7 +691,147 @@ FittingEffectDataset/
 
 Set `datasets.fittingeffect_root` in `system.json`, then run `bash scripts/run_fittingeffect_eval.sh`.
 
-The evaluation protocol scores four fit dimensions with a VLM judge — Garment-Body Alignment (GB), Tightness/Looseness (T/L), Silhouette Consistency (SC), and Local Fit Artifacts (LF) — each rated 1-5 against the real try-on reference.
+The evaluation protocol scores four fit dimensions with a VLM scoring agent — Garment-Body Alignment (GB), Tightness/Looseness (T/L), Silhouette Consistency (SC), and Local Fit Artifacts (LF) — each rated 1–5 against the real try-on reference. See [VLM fit evaluation](#vlm-fit-evaluation) for setup, pairing rules, and aggregation details.
+
+## VLM Fit Evaluation
+
+`vlm_fit_eval.py` implements the paper's **Fit-Oriented Evaluation Protocol**: a VLM-based scoring pipeline that compares each predicted try-on image against the corresponding real-wearing ground truth and aggregates scores into per-dimension and per-category averages. The default scoring agent is **GPT-5.2** (OpenAI-compatible vision API), matching the paper setup.
+
+### Prerequisites
+
+```bash
+pip install openai
+```
+
+Configure an **OpenAI-compatible** vision API in `system.json`:
+
+```json
+{
+  "vlm_eval": {
+    "gateway": "https://your-api.example.com/v1",
+    "api_key": "sk-...",
+    "model": "gpt-5.2-chat",
+    "output_dir": "eval_vlm",
+    "concurrency": "8"
+  }
+}
+```
+
+| Key | Description |
+|-----|-------------|
+| `gateway` | API base URL (must include `/v1` suffix if required by your provider) |
+| `api_key` | Secret key for the gateway |
+| `model` | VLM scoring agent (default `gpt-5.2-chat`, as in the paper) |
+| `output_dir` | Directory for evaluation and analysis JSON files |
+| `concurrency` | Number of parallel API requests |
+
+Environment overrides (optional): `VLM_EVAL_GATEWAY`, `VLM_EVAL_API_KEY`, `VLM_EVAL_MODEL`.
+
+### Workflow
+
+1. **Generate predictions** with `inference_fittingeffect.py` (or place PNGs in a folder).
+2. **Run scoring** — evaluates all valid triples and writes a results JSON; analysis runs automatically afterward.
+
+```bash
+python vlm_fit_eval.py \
+  --predict-folder outputs/fittingeffect \
+  --triples-csv FittingEffectDataset/tryon_triples_all.csv \
+  --female-gt-folder FittingEffectDataset/female/human \
+  --male-gt-folder FittingEffectDataset/male/human
+```
+
+When flags are omitted, paths default from `system.json` (`outputs.fittingeffect`, `datasets.fittingeffect_root`, and `vlm_eval.output_dir`).
+
+Useful flags:
+
+| Flag | Purpose |
+|------|---------|
+| `--skip-analysis` | Run API scoring only; skip aggregate statistics |
+| `--analyze-only --input-file path/to/results.json` | Recompute aggregates from an existing results file |
+| `--analysis-output path.json` | Custom path for the analysis JSON |
+| `--model`, `--concurrency`, `--output-dir` | Override `system.json` defaults |
+
+**Resume behavior:** if the results JSON already exists, successfully scored pairs (`ok: true`) are skipped on the next run.
+
+### Image pairing
+
+Triples are read from a CSV with columns `source_person`, `cloth`, `target_person`:
+
+| Role | Path pattern |
+|------|----------------|
+| Prediction (Image B) | `{predict_folder}/{source_person}_{cloth}.png` |
+| Ground truth (Image A) | `{female\|male}/human/{target_person}.jpg` |
+
+Gender is inferred from the `female_` / `male_` prefix on person IDs. Source and target must share the same gender.
+
+Garment category is inferred from the `cloth` name:
+
+| `cloth` prefix | Category | Silhouette dimension |
+|----------------|----------|----------------------|
+| `upper_` | upper | Upper-Body Silhouette Consistency (SC) |
+| `lower_` | lower | Lower-Body Silhouette Consistency (SC) |
+| `wholebody_` or `dress_` | dress | Overall Silhouette Consistency (SC) |
+
+### Scoring protocol (Fit-Oriented Evaluation Protocol)
+
+For each pair, the VLM evaluator receives **Image A** (real try-on reference) and **Image B** (virtual try-on result) and rates four dimensions on an integer **1–5** scale:
+
+| Score | Meaning |
+|-------|---------|
+| 5 | Virtually identical fit; negligible differences |
+| 4 | Very close; minor localized differences |
+| 3 | Acceptable but clearly different |
+| 2 | Poor match; major fit discrepancies |
+| 1 | Very poor; largely incorrect fit behavior |
+
+The evaluator is instructed to focus on **fit accuracy** (alignment, tightness, silhouette, local artifacts) rather than realism or aesthetics, and to ignore lighting, background, and framing differences — consistent with the paper protocol.
+
+**Per-category dimensions** (JSON keys in the model response):
+
+| Dimension | Abbrev. | Upper | Lower | Dress |
+|-----------|---------|:-----:|:-----:|:-----:|
+| Garment–Body Alignment | GB | ✓ | ✓ | ✓ |
+| Tightness / Looseness Consistency | T/L | ✓ | ✓ | ✓ |
+| Silhouette Consistency | SC | upper body | lower body | overall |
+| Local Fit Artifacts | LF | upper body | lower body | dress/skirt |
+
+For layered upper garments (jackets, coats, etc.), only the **outer** garment fit is evaluated; inner-layer mismatches are ignored.
+
+### Aggregation
+
+After all pairs are scored, `vlm_fit_eval.py` computes:
+
+1. **Per-dimension average** — mean score for each dimension within a category.
+2. **Category average** — mean of all dimension scores in that category (excluding any legacy `overall_fitting_consistency` field).
+3. **Whole Avg (`overall_avg`)** — **macro average** across garment types:
+
+   ```
+   Whole Avg = (Upper Avg + Lower Avg + Dress Avg) / 3
+   ```
+
+   Only categories with at least one scored sample are included. This gives **equal weight** to upper, lower, and dress regardless of how many test pairs each type has.
+
+   The analysis JSON also reports `overall_micro_avg` (pooling all dimension scores together) for reference; the paper **Whole Avg** column uses the macro category mean.
+
+### Output files
+
+| File | Description |
+|------|-------------|
+| `eval_vlm/vlm_eval_results_{predict}_{csv}_{model}.json` | Per-pair raw results (`ok`, `evaluation`, paths, metadata) |
+| `eval_vlm/vlm_eval_analysis_{predict}_{csv}_{model}.json` | Aggregated averages by dimension and category |
+
+Example analysis structure:
+
+```json
+{
+  "overall_avg": 3.08,
+  "overall_avg_method": "macro_category",
+  "overall_micro_avg": 3.05,
+  "upper": { "category_avg": 3.22, "dimensions": { ... } },
+  "lower": { "category_avg": 2.99, "dimensions": { ... } },
+  "dress": { "category_avg": 2.90, "dimensions": { ... } }
+}
+```
 
 ## License
 
