@@ -4,6 +4,11 @@
 
 <sub><em>&dagger; Corresponding author</em></sub>
 
+[![arXiv](https://img.shields.io/badge/arXiv-2606.12012-b31b1b.svg)](https://arxiv.org/abs/2606.12012)
+[![Project Page](https://img.shields.io/badge/Project-Page-blue.svg)](https://zenoning.github.io/FitVTON/)
+[![GarmentCodeVTON](https://img.shields.io/badge/Dataset-GarmentCodeVTON-yellow.svg)](https://huggingface.co/datasets/ZenoNing/GarmentCodeVTONDataset)
+[![FittingEffect3K](https://img.shields.io/badge/Benchmark-FittingEffect3K-orange.svg)](https://huggingface.co/datasets/ZenoNing/FittingEffectDataset)
+
 FitVTON is a fit-aware virtual try-on model that generates authentic garment fitting effects across diverse body shapes. It represents garment-body size with structured text prompts, e.g. *"long-length upper garment"* on a *"slim, medium-tall body"*, and learns fitting behavior from physically simulated try-on triplets.
 
 ![FitVTON teaser: compared with prompt-driven commercial editing, FitVTON adapts hem position, tightness, and cuff elasticity to each body shape](assets/Teaser.png)
