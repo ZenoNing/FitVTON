@@ -23,6 +23,31 @@ FitVTON is a fit-aware virtual try-on model that generates authentic garment fit
 - **Texture rectification.** Stage II updates image LoRA on VITON-HD / DressCode pseudo-triplets while keeping the text LoRA frozen.
 - **FittingEffect3K.** Real-world benchmark with fit-oriented VLM scoring and human preference evaluation.
 
+## Documentation
+
+| Topic | Details |
+|-------|---------|
+| Environment setup, CUDA hooks, Warp build | [`docs/setup.md`](docs/setup.md) |
+| Paths, datasets, checkpoints, custom storage | [`docs/configuration.md`](docs/configuration.md) |
+| Inference commands and benchmark generation | [`docs/inference.md`](docs/inference.md) |
+| Stage I / Stage II training | [`docs/training.md`](docs/training.md) |
+| FittingEffect3K and VLM fit evaluation | [`docs/evaluation.md`](docs/evaluation.md) |
+| Regenerating GarmentCodeVTON locally | [`docs/garmentcodev2.md`](docs/garmentcodev2.md) |
+
+## Repository Map
+
+| Component | Entry point |
+|-----------|-------------|
+| Single-sample fit-prompt inference | `inference_demo.py` |
+| FittingEffect3K inference | `inference_fittingeffect.py` / `scripts/run_fittingeffect_eval.sh` |
+| Fit-oriented VLM evaluation | `vlm_fit_eval.py` |
+| Stage I fitting LoRA | `train_fitting_lora.py` / `scripts/train_stage1.sh` |
+| Mask heads | `train_maskhead.py` |
+| Stage II pseudo generation | `generate_pseudo_images.py` / `scripts/generate_pseudo_images.sh` |
+| Stage II texture LoRA | `train_texture_lora.py` / `scripts/train_stage2.sh` |
+| GarmentCodeV2 simulation | `GarmentCodeV2/` |
+| Runtime configuration | `system.json` / `system_config.py` |
+
 ## Quick Start
 
 Run all commands from the `FitVTON/` directory.
@@ -136,31 +161,6 @@ Human preference study on FittingEffect3K (20 participants, 100 cases, 2,000 sel
 | CatVTON | 86 | 4.30% |
 
 </div>
-
-## Documentation
-
-| Topic | Details |
-|-------|---------|
-| Environment setup, CUDA hooks, Warp build | [`docs/setup.md`](docs/setup.md) |
-| Paths, datasets, checkpoints, custom storage | [`docs/configuration.md`](docs/configuration.md) |
-| Inference commands and benchmark generation | [`docs/inference.md`](docs/inference.md) |
-| Stage I / Stage II training | [`docs/training.md`](docs/training.md) |
-| FittingEffect3K and VLM fit evaluation | [`docs/evaluation.md`](docs/evaluation.md) |
-| Regenerating GarmentCodeVTON locally | [`docs/garmentcodev2.md`](docs/garmentcodev2.md) |
-
-## Repository Map
-
-| Component | Entry point |
-|-----------|-------------|
-| Single-sample fit-prompt inference | `inference_demo.py` |
-| FittingEffect3K inference | `inference_fittingeffect.py` / `scripts/run_fittingeffect_eval.sh` |
-| Fit-oriented VLM evaluation | `vlm_fit_eval.py` |
-| Stage I fitting LoRA | `train_fitting_lora.py` / `scripts/train_stage1.sh` |
-| Mask heads | `train_maskhead.py` |
-| Stage II pseudo generation | `generate_pseudo_images.py` / `scripts/generate_pseudo_images.sh` |
-| Stage II texture LoRA | `train_texture_lora.py` / `scripts/train_stage2.sh` |
-| GarmentCodeV2 simulation | `GarmentCodeV2/` |
-| Runtime configuration | `system.json` / `system_config.py` |
 
 ## License
 
